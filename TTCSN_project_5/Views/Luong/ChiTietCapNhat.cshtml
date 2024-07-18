@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietCapNhat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLLuong", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Chi tiết cập nhật lương</h2>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+    .two {
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        border: none;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        position: relative;
+        padding: 0;
+    }
+
+        .two a {
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+        }
+    a {
+        color: darkslateblue;
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+    }
+    th, td {
+        padding: 12px;
+        border:1px solid black;
+    }
+    .two a {
+        color: black;
+    }
+    table {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    th {
+        background-color: lightgray;
+        border-width: 1px;
+    }
+
+    td {
+        padding: 5px 10px !important;
+        border-color: lightgray !important;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    th {
+        padding: 10px;
+        border: 1px solid black;
+        font-size: 14px;
+        text-align: center;
+    }
+    .title{
+        text-align: center;
+    }
+    .webkit {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
+    }
+</style>
+
+@{
+    double thucLinh = 0;
+    int lcb = 0;
+    double hsl = 0;
+    int tt = 0;
+    int tp = 0;
+    int pc = 0;
+    double thue = 0;
+}
+<table border="1" style="border-collapse:collapse;">
+    <tr>
+        <th>Mã cập nhật</th>
+        <th>Mã nhân viên</th>
+        <th>Ngày cập nhật</th>
+        <th>Lương trước</th>
+        <th>Lương sau</th>
+        <th>Ghi chú</th>
+        <th>Tổng số bản ghi: @ViewBag.lg</th>
+    </tr>
+
+    @{
+        for (int i = 0; i < ViewBag.lg; i++)
+        {
+            <tr>
+                <td>@Model[i].MaCapNhatLuong</td>
+                <td>@Model[i].MaNhanVien</td>
+                @{
+                    string ngayCapNhat = String.Format("{0:dd/MM/yyyy}", @Model[i].NgayCapNhat);
+                }
+            <td>@Model[i].NgayCapNhat</td>
+                <td>@Model[i].LuongTruoc</td>
+                <td>@Model[i].LuongSau</td>
+                <td><p class="webkit">@Model[i].GhiChu</p></td>
+                <td></td>
+            </tr>
+        }
+    }
+    @{
+        if (ViewBag.lg == 0)
+        {
+            <tr>
+                <td colspan="11" style="text-align:center;">Không tồn tại bản ghi nào</td>
+            </tr>
+        }
+    }
+</table>
+

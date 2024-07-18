@@ -1,0 +1,284 @@
+﻿
+@{
+    ViewBag.Title = "UpdateNgayNghi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLNgayNghi", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Sửa ngày nghỉ</h2>
+<style>
+    table, th, td {
+        border: 2px solid gray;
+        padding: 10px;
+    }
+
+    .two a {
+        color: black;
+    }
+
+    th, td {
+        padding: 10px 30px;
+        border: none;
+    }
+
+    .two a {
+        color: black;
+    }
+
+    .two {
+        color: black;
+    }
+
+    table, tr, th {
+        border: none;
+    }
+
+    th {
+        background-color: lightsteelblue;
+        border-bottom: 2px white solid;
+    }
+
+    tr, th, td {
+        padding: 10px;
+    }
+
+    td {
+        padding: 0;
+        padding-left: 30px;
+        width: 80%;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 0px;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    table {
+        position: relative;
+        width: 80%;
+    }
+
+    .one {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        top: 0px;
+        right: -95px;
+    }
+
+    .two {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        text-align: center;
+    }
+
+        .two a {
+            text-decoration: none;
+        }
+
+    .input_one {
+        width: 192px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        width: calc(100% - 10px);
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        height: 100%;
+    }
+
+    .form__table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .gender__name input {
+        width: auto;
+    }
+
+    #GioiTinh {
+        color: blue;
+    }
+
+    select {
+        border: none;
+        width: 100%;
+        padding: 5px 0px;
+        outline: none;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        background-color: ghostwhite;
+    }
+
+        select:hover {
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+
+    .ngaysinh input:hover {
+        cursor: pointer;
+    }
+
+    .two, .one {
+        border: none;
+        padding: 0px;
+        border-radius: 10px;
+    }
+
+        .two a,
+        .one {
+            display: block;
+            padding: 10px 15px;
+        }
+
+            .one:hover {
+                cursor: pointer;
+            }
+
+    textarea {
+        width: calc(100% - 9px);
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 14px;
+        padding: 5px;
+        outline: none;
+        max-width: 710px;
+    }
+
+    .form_meseage,
+    .password_meseage,
+    .account_meseage {
+        color: red;
+        font-family: 'Segoe UI';
+        font-size: 16px;
+        display: none;
+        transition: 0.6s;
+    }
+
+    .form_group {
+        width: 100%;
+    }
+</style>
+
+@using (Html.BeginForm("SaveUpdateNgayNghi", "NgayNghi"))
+{
+    <div class="form__table">
+        <table border="0" style="border-collapse:collapse;">
+            <tr>
+                <th>@Html.Label("Mã ngày nghỉ")</th>
+                <td><input type="text" readonly name="MaNgayNghi" value="@Model.MaNgayNghi" style="background-color: lightgray; opacity: 0.5;" /></td>
+
+            </tr>
+            <tr>
+                <th>@Html.Label("Mã nhân viên")</th>
+                <td><input type="text" readonly name="MaNhanVien" value="@Model.MaNhanVien" style="background-color: lightgray; opacity: 0.5;" /></td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Ngày nghỉ")</th>
+                @{
+                    string currentNgayNghi = String.Format("{0:yyyy-MM-dd}", @Model.NgayNghiDate);
+                }
+                <td>
+                    <div class="form_group">
+                        <input type="date" name="NgayNghiDate" value="@currentNgayNghi" id="NgayNghiDate" />
+                        <span class="form_meseage">Ngày nghỉ không được để trống!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Lý do")</th>
+                <td>
+                    <div class="form_group">
+                        <textarea type="text" name="LyDo" id="LyDo">@Model.LyDo</textarea>
+                        <span class="form_meseage">Lý do không được để trống!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Ghi Chú")</th>
+                <td><textarea type="text" name="GhiChu">@Model.GhiChu</textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 30px 0; text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="one" type="submit" style=" transform: translateX(-130%);">
+                            Lưu
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<script>
+    var buttonThemElement = document.querySelector(".one");
+    var LyDoElement = document.getElementById("LyDo");
+    var checkIsValueError = false;
+
+    function change(element) {
+        var parentElement = element.parentNode;
+        var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+        var valueCheck = element.value.trim();
+        if (valueCheck == "") {
+            checkIsValueError = true;
+        }
+        else {
+            checkIsValueError = false;
+            var arrayElement = [LyDoElement];
+            arrayElement.forEach(function (element) {
+                if (element.value.trim() == "") {
+                    checkIsValueError = true;
+                }
+            });
+        }
+        if (valueCheck == "") {
+            formMesseageInGroup.style.display = 'block';
+        } else {
+            formMesseageInGroup.style.display = 'none';
+        }
+        element.oninput = function () {
+            formMesseageInGroup.style.display = 'none';
+        }
+    }
+    LyDoElement.addEventListener("blur", function () { change(LyDoElement) });
+    buttonThemElement.addEventListener('click', (event) => {
+        //check từng trường nhập
+        var arrayElement = [LyDoElement];
+        arrayElement.forEach(function (element) {
+            var parentElement = element.parentNode;
+            var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+            if (element.value.trim() == "") {
+                element.focus();
+                formMesseageInGroup.style.display = 'block';
+                checkIsValueError = true;
+            }
+        });
+
+        if (checkIsValueError) { event.preventDefault(); }
+
+    });
+</script>
+

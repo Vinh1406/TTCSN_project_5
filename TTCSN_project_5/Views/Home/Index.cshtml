@@ -1,0 +1,418 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+.Menu_content {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+
+.header {
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+    background-color: white;
+}
+
+    .title {
+        text-align: center;
+        background-color: lightblue;
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 10px 0;
+        color: black;
+    }
+    .menu {
+        padding: 30px;
+        background-color: white;
+    }
+    .content {
+    }
+    .content_overral {
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: calc(20% + 10px);
+        right: 0;
+    }
+    .content_header {
+        display: flex;
+        align-items: center;
+        background-color: #ebebeb;
+        padding: 0 16px;
+        font-size: 15px;
+    }
+    .header_icon {
+        margin-right: 8px;
+    }
+    .content_mennu {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+    }
+    .content_direct {
+        border: 1px solid #d05c1c;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 23%;
+        background-color: beige;
+    }
+    .direct_header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        align-items: center;
+        background-color: #d05c1c;
+        color: white;
+    }
+    .direct_icon i {
+        font-size: 50px;
+    }
+    .direct_descript {
+        text-align: right;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 33px;
+    }
+    .direct_icon {
+        padding: 16px;
+        padding-left: 0;
+    }
+    .content_drect_link {
+        text-decoration: none;
+    }
+    .direct_title {
+        text-transform: uppercase;
+    }
+    .direct_number {
+        font-size: 22px;
+    }
+    .direct_click {
+        padding: 16px;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        color: #d05c1c;
+    }
+    *{
+    margin: 0px;
+    padding: 0px;
+}
+    
+
+
+.context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+
+    .area {
+        background: #3a7fbd;
+        background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+        width: 100%;
+        height: calc(100% - 136px);
+    }
+
+    .circles {
+        position: absolute;
+/*        top: 0;
+        left: calc(20% + 10px);
+        right: 0;*/
+        width: calc(80% - 20px);
+        height: 600px;
+        overflow: hidden;
+        top: 100px;
+        z-index: 0;
+    }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgb(134 175 212);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+    .content_2 {
+        position:relative;
+    }
+</style>
+<body>
+    <div class="header">
+        <h2 class="title">TRANG CHỦ QUẢN TRỊ</h2>
+    </div>
+    @*<div class="area">*@
+        @*<div class="content_overral">
+        </div>*@
+<div style="position:relative;z-index:2;">
+    <div class="content_mennu">
+        <div class="content_direct" style="margin-right: 16px">
+            <a href="https://localhost:44337/Home/QLNhanVien" class="content_drect_link">
+                <div class="direct_header">
+                    <div class="direct_icon">
+                        <i class="fa-solid fa-user-large"></i>
+                    </div>
+                    <div class="direct_descript">
+                        <div class="direct_number">@ViewBag.soLuongNhanVien</div>
+                        <div class="direct_title">Số nhân viên</div>
+                    </div>
+                </div>
+                <div class="direct_click">
+                    <div class="click_title">Xem chi tiết</div>
+                    <div class="click_icon">
+                        <i class="fa-solid fa-circle-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="content_direct" style="border-color: #2d829d">
+            <a href="https://localhost:44337/Home/QLPhongBan" class="content_drect_link">
+                <div class="direct_header" style="background-color: #2d829d">
+                    <div class="direct_icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div class="direct_descript">
+                        <div class="direct_number">@ViewBag.soLuongPhongBan</div>
+                        <div class="direct_title">Số phòng ban</div>
+                    </div>
+                </div>
+                <div class="direct_click" style="color: #2d829d">
+                    <div class="click_title">Xem chi tiết</div>
+                    <div class="click_icon">
+                        <i class="fa-solid fa-circle-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div style="display: flex; justify-content:space-between;">
+        <div style="width: 30%; margin: 20px;">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div style="width: 65%; margin: 20px; display:flex; align-items: center;">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+    <div style="margin: 20px;">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+                const ctx = document.getElementById('myChart');
+                var myArray = @Html.Raw(Json.Encode(ViewBag.Label));
+                var dataPB = @Html.Raw(Json.Encode(ViewBag.data));
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: myArray,
+                        datasets: [{
+                            label: 'Số nhân viên',
+                            data: dataPB,
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+    </script>
+    <script>
+                const bc = document.getElementById('barChart');
+                var lbmPhong = @Html.Raw(Json.Encode(ViewBag.lbmPhong));
+                var nvmPhong =  @Html.Raw(Json.Encode(ViewBag.nvmPhong));
+                var date2 = new Date();
+                var lbnvm = "Số lượng nhân viên mới trong tháng " + date2.getMonth().toString();
+                new Chart(bc, {
+                    type: 'bar',
+                    data: {
+                        labels: lbmPhong,
+                        datasets: [{
+                            label: 'Số lượng nhân viên mới trong tháng',
+                            data: nvmPhong,
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+    </script>
+    <script>
+                const lc = document.getElementById('lineChart');
+                var lbt = @Html.Raw(Json.Encode(ViewBag.LabelThang));
+                var nghiValue = @Html.Raw(Json.Encode(ViewBag.nghiValue));
+                var nvThemTrongThang = @Html.Raw(Json.Encode(ViewBag.nvThemTrongThang));
+                var datee = new Date();
+                var labelht = `Lượt nghỉ hàng tháng (` + datee.getFullYear().toString() + ')';
+                var labelht2 = `Giao động nhân viên (` + datee.getFullYear().toString() + ')';
+                new Chart(lc, {
+                    type: 'line',
+                    data: {
+                        labels: lbt,
+                        datasets: [{
+                            label: labelht,
+                            data: nghiValue,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        },
+                        {
+                            label: labelht2,
+                            data: nvThemTrongThang,
+                            fill: false,
+                            borderColor: 'rgb(140, 100, 200)',
+                            tension: 0.1
+                        }],
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+    </script>
+</div>
+        <div style="z-index:0;">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    @*</div>*@
+</body>

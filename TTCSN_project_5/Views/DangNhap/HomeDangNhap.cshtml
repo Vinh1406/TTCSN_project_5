@@ -1,0 +1,358 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomeDangNhap</title>
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+    }
+
+    .DangNhapContainer {
+        height: calc(100vh - 32px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .DangNhapFormContainer {
+        width: 30%;
+        background-color: aliceblue;
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+        padding: 10px 20px;
+        padding-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    .line1, .line2 {
+        display: flex;
+        margin: 20px 0;
+    }
+
+        .line1 input, .line2 input {
+            padding: 5px 10px;
+            width: 70%;
+            font-size: 15px;
+        }
+
+    .buttonDiv {
+        text-align: center;
+        margin-top: 40px;
+    }
+    .buttonDiv button{
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        background-color: mediumpurple;
+        font-size: 16px;
+        color: white;
+        transition: 0.3s;
+    }
+
+        .buttonDiv button:hover {
+            cursor: pointer;
+            background-color: lightyellow;
+            color: black;
+        }
+</style>
+<style>
+    body {
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  overflow: hidden;
+}
+
+.stars {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+}
+
+    .star {
+        --star-color: var(--primary-color);
+        --star-tail-length: 6em;
+        --star-tail-height: 2px;
+        --star-width: calc(var(--star-tail-length) / 6);
+        --fall-duration: 9s;
+        --tail-fade-duration: var(--fall-duration);
+        background-color: paleturquoise !important;
+        position: absolute;
+        top: var(--top-offset);
+        left: 0;
+        width: var(--star-tail-length);
+        height: var(--star-tail-height);
+        color: var(--star-color);
+        background: linear-gradient(45deg, currentColor, transparent);
+        border-radius: 50%;
+        filter: drop-shadow(0 0 6px currentColor);
+        transform: translate3d(104em, 0, 0);
+        animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+    }
+@@media screen and (max-width: 750px) {
+  .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
+}
+.star:nth-child(1) {
+  --star-tail-length: 6.36em;
+  --top-offset: 42.23vh;
+  --fall-duration: 9.741s;
+  --fall-delay: 7.633s;
+}
+.star:nth-child(2) {
+  --star-tail-length: 5.88em;
+  --top-offset: 47.7vh;
+  --fall-duration: 6.024s;
+  --fall-delay: 4.446s;
+}
+.star:nth-child(3) {
+  --star-tail-length: 5.65em;
+  --top-offset: 57.98vh;
+  --fall-duration: 8.715s;
+  --fall-delay: 0.175s;
+}
+.star:nth-child(4) {
+  --star-tail-length: 6.45em;
+  --top-offset: 46.34vh;
+  --fall-duration: 10.082s;
+  --fall-delay: 7.343s;
+}
+.star:nth-child(5) {
+  --star-tail-length: 6.07em;
+  --top-offset: 33.51vh;
+  --fall-duration: 8.561s;
+  --fall-delay: 9.161s;
+}
+.star:nth-child(6) {
+  --star-tail-length: 6.46em;
+  --top-offset: 51.77vh;
+  --fall-duration: 8.577s;
+  --fall-delay: 3.768s;
+}
+.star:nth-child(7) {
+  --star-tail-length: 7.02em;
+  --top-offset: 48.02vh;
+  --fall-duration: 9.334s;
+  --fall-delay: 4.99s;
+}
+.star:nth-child(8) {
+  --star-tail-length: 5.36em;
+  --top-offset: 88.12vh;
+  --fall-duration: 6.728s;
+  --fall-delay: 6.066s;
+}
+.star:nth-child(9) {
+  --star-tail-length: 6.31em;
+  --top-offset: 1.12vh;
+  --fall-duration: 6.156s;
+  --fall-delay: 8.392s;
+}
+.star:nth-child(10) {
+  --star-tail-length: 5.01em;
+  --top-offset: 4.04vh;
+  --fall-duration: 9.65s;
+  --fall-delay: 7.649s;
+}
+.star:nth-child(11) {
+  --star-tail-length: 5.68em;
+  --top-offset: 82.96vh;
+  --fall-duration: 6.357s;
+  --fall-delay: 8.89s;
+}
+.star:nth-child(12) {
+  --star-tail-length: 6.1em;
+  --top-offset: 26.86vh;
+  --fall-duration: 10.025s;
+  --fall-delay: 8.51s;
+}
+.star:nth-child(13) {
+  --star-tail-length: 7.33em;
+  --top-offset: 18.36vh;
+  --fall-duration: 10.452s;
+  --fall-delay: 2.309s;
+}
+.star:nth-child(14) {
+  --star-tail-length: 5.92em;
+  --top-offset: 27.41vh;
+  --fall-duration: 6.045s;
+  --fall-delay: 2.952s;
+}
+.star:nth-child(15) {
+  --star-tail-length: 5.71em;
+  --top-offset: 91.3vh;
+  --fall-duration: 7.186s;
+  --fall-delay: 7.61s;
+}
+.star:nth-child(16) {
+  --star-tail-length: 6.77em;
+  --top-offset: 36.31vh;
+  --fall-duration: 9.4s;
+  --fall-delay: 3.296s;
+}
+.star:nth-child(17) {
+  --star-tail-length: 6.49em;
+  --top-offset: 64.01vh;
+  --fall-duration: 6.115s;
+  --fall-delay: 3.196s;
+}
+.star:nth-child(18) {
+  --star-tail-length: 6.97em;
+  --top-offset: 2.62vh;
+  --fall-duration: 6.781s;
+  --fall-delay: 0.079s;
+}
+.star:nth-child(19) {
+  --star-tail-length: 7.27em;
+  --top-offset: 76.2vh;
+  --fall-duration: 6.796s;
+  --fall-delay: 0.403s;
+}
+.star:nth-child(20) {
+  --star-tail-length: 5.3em;
+  --top-offset: 16.92vh;
+  --fall-duration: 6.802s;
+  --fall-delay: 8.18s;
+}
+.star:nth-child(21) {
+  --star-tail-length: 6.27em;
+  --top-offset: 17.27vh;
+  --fall-duration: 6.248s;
+  --fall-delay: 3.998s;
+}
+.star:nth-child(22) {
+  --star-tail-length: 6.52em;
+  --top-offset: 72.99vh;
+  --fall-duration: 10.271s;
+  --fall-delay: 4.112s;
+}
+.star:nth-child(23) {
+  --star-tail-length: 6.07em;
+  --top-offset: 60.09vh;
+  --fall-duration: 8.721s;
+  --fall-delay: 4.179s;
+}
+.star:nth-child(24) {
+  --star-tail-length: 5.48em;
+  --top-offset: 5vh;
+  --fall-duration: 8.43s;
+  --fall-delay: 3.388s;
+}
+.star:nth-child(25) {
+  --star-tail-length: 5.38em;
+  --top-offset: 20.57vh;
+  --fall-duration: 7.183s;
+  --fall-delay: 9.824s;
+}
+    .star::before, .star::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: calc(var(--star-width) / -2);
+        width: var(--star-width);
+        height: 100%;
+        background: linear-gradient(60deg, transparent, paleturquoise, transparent);
+        border-radius: inherit;
+        animation: blink 2s linear infinite;
+    }
+.star::before {
+  transform: rotate(45deg);
+}
+.star::after {
+  transform: rotate(-45deg);
+}
+
+@@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+@@keyframes tail-fade {
+  0%, 50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+  70%, 80% {
+    width: 0;
+    opacity: 0.4;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+@@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+</style>
+@{
+
+}
+<body>
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    <div>
+        <div class="DangNhapContainer">
+
+            <div class="DangNhapFormContainer">
+                <h2 style="text-align:center; margin-bottom: 40px;">ĐĂNG NHẬP</h2>
+                <form method="post">
+                    <div class="line1">
+                        <div style="width: 30%; display: flex; align-items: center; justify-content: center;"><label>Tên đăng nhập</label></div>
+                        <div style="width:70%; text-align:center;"><input type="text" name="username" value="" /></div>
+                    </div>
+                    <div style="text-align:center; color: red;">@ViewData["Loi1"]</div>
+                    <div class="line2">
+                        <div style="width: 30%; justify-content: center; display: flex; align-items: center;"><label>Mật khẩu</label></div>
+                        <div style="width: 70%; text-align: center;"><input type="password" name="password" value="" /></div>
+                    </div>
+                    <div style="text-align: center; color: red;">@ViewData["Loi2"]</div>
+                    <div style="text-align: center; color: red;">@ViewData["LoiTong"]</div>
+                    <div class="buttonDiv">
+                        <button type="submit">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

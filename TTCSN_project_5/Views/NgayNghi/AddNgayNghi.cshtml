@@ -1,0 +1,347 @@
+﻿
+@{
+    ViewBag.Title = "AddNgayNghi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLNgayNghi", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Thêm ngày nghỉ</h2>
+<style>
+    table, th, td {
+        border: 1px solid gray;
+        padding: 10px;
+    }
+    th, td {
+        padding: 10px 30px;
+        border: none;
+    }
+
+    .two a {
+        color: black;
+    }
+
+    .two {
+        color: black;
+    }
+
+    table, tr, th {
+        border: none;
+    }
+
+    th {
+        background-color: lightsteelblue;
+        border-bottom: 2px white solid;
+    }
+
+    tr, th, td {
+        padding: 10px;
+    }
+
+    td {
+        padding: 0;
+        padding-left: 30px;
+        width: 80%;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 0px;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    table {
+        position: relative;
+        width: 80%;
+    }
+
+    .one {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        top: 0px;
+        right: -95px;
+    }
+
+    .two {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        text-align: center;
+    }
+
+        .two a {
+            text-decoration: none;
+        }
+
+    .input_one {
+        width: 192px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        width: calc(100% - 10px);
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        height: 100%;
+    }
+
+    .form__table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .gender__name input {
+        width: auto;
+    }
+
+    #GioiTinh {
+        color: blue;
+    }
+
+    select {
+        border: none;
+        width: 100%;
+        padding: 5px 0px;
+        outline: none;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        background-color: ghostwhite;
+    }
+
+        select:hover {
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+
+    .ngaysinh input:hover {
+        cursor: pointer;
+    }
+
+    .two, .one {
+        border: none;
+        padding: 0px;
+        border-radius: 10px;
+    }
+
+        .two a,
+        .one {
+            display: block;
+            padding: 10px 15px;
+        }
+
+            .one:hover {
+                cursor: pointer;
+            }
+
+    textarea {
+        width: calc(100% - 9px);
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 14px;
+        padding: 5px;
+        outline: none;
+        max-width: 710px;
+    }
+    .form_meseage,
+    .password_meseage,
+    .account_meseage,
+    .account_meseage_Space,
+    .NameAccount_meseage {
+        color: red;
+        font-family: 'Segoe UI';
+        font-size: 16px;
+        display: none;
+        transition: 0.6s;
+    }
+
+    .form_group {
+        width: 100%;
+    }
+</style>
+<form action="/NgayNghi/SaveAddNgayNghi/@ViewBag.id">
+    <div class="form__table">
+        <table border="0" style="border-collapse:collapse;">
+            <tr>
+                <th>@Html.Label("Mã nhân viên")</th>
+                <td><input type="text" readonly name="MaNhanVien" value="@ViewBag.id" style="background-color: lightgray; opacity: 0.5;" /></td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Mã ngày nghỉ")</th>
+                <td>
+                    <div class="form_group">
+                        <input type="text" name="MaNgayNghi" id="MaNgayNghi" />
+                        <span class="form_meseage">Mã ngày nghỉ không được để trống!</span>
+                        <span class="account_meseage">Mã ngày nghỉ đã tồn tại!</span>
+                        <span class="account_meseage_Space">Mã không là tiếng việt và không chứa khoảng trắng!</span>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Ngày nghỉ")</th>
+                <td>
+                    <div class="form_group">
+                        <input type="date" name="NgayNghiDate" id="NgayNghiDate" />
+                        <span class="form_meseage">Ngày nghỉ không được để trống!</span>
+                        <span class="NameAccount_meseage">Ngày nghỉ đã tồn tại!</span>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Lý do")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextArea("LyDo")
+                        <span class="form_meseage">Lý do không được để trống!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Ghi Chú")</th>
+                <td>@Html.TextArea("GhiChu")</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 30px 0; text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="one" type="submit" style=" transform: translateX(-130%);">
+                            Thêm
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </div>
+</form>
+<script>
+    var buttonThemElement = document.querySelector(".one");
+    var NgayNghiElement = document.getElementById("NgayNghiDate");
+    var MaNgayNghiElement = document.getElementById("MaNgayNghi");
+    var NgayNghiDateElement = document.getElementById("NgayNghiDate");
+    var LyDoElement = document.getElementById("LyDo");
+    var checkIsValueError = false;
+
+    function checkTiengViet(inputString) {
+        var vietnamesePattern = /[\u00C0-\u1EF9\u1EFA-\u1F00\u0300-\u036F\s]+/;
+        return vietnamesePattern.test(inputString);
+    }
+    function checkMaNgayNghi(element) {
+        var parentElement = element.parentNode;
+            var MaNhanVienMesseageInGroup = parentElement.querySelector(".account_meseage");
+        var valueCheck = element.value.trim();
+        var listnn = @Html.Raw(Json.Encode(ViewBag.listNgayNghi));
+            console.log(listnn[0]);
+        if (listnn[0] === NgayNghiDateElement.value) { console.log("Trung")}
+        var dsMaPhongBan = @Html.Raw(Json.Encode(ViewBag.listMaNgayNghi));
+            if (checkTiengViet(valueCheck)) {
+                checkIsValueError = true;
+                parentElement.querySelector(".account_meseage_Space").style.display = 'block';
+                MaNhanVienMesseageInGroup.style.display = 'none';
+                checkIsValueError = true;
+                return false;
+              }
+                else {
+                parentElement.querySelector(".account_meseage_Space").style.display = 'none';
+                if (dsMaPhongBan.some(item => item.toUpperCase() === valueCheck.toUpperCase())) {
+                    checkIsValueError = true;
+                    MaNhanVienMesseageInGroup.style.display = 'block';
+                    return false;
+                } else {
+                    checkIsValueError = false;
+                    MaNhanVienMesseageInGroup.style.display = 'none';
+                    return true;
+                }
+        }
+    }
+    function checkTenNgayNghi(element) {
+        var parentElement = element.parentNode;
+        var TenTaiKhoanMesseageInGroup = parentElement.querySelector(".NameAccount_meseage");
+        var valueCheck = element.value.trim();
+       var listnn = @Html.Raw(Json.Encode(ViewBag.listNgayNghi));
+                if (listnn.some(item => item.toUpperCase() === valueCheck.toUpperCase())){
+                checkIsValueError = true;
+                TenTaiKhoanMesseageInGroup.style.display = 'block';
+                return false;
+            } else {
+                checkIsValueError = false;
+                TenTaiKhoanMesseageInGroup.style.display = 'none';
+                return true;
+            }
+    }
+    function change(element) {
+        var parentElement = element.parentNode;
+        var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+        var valueCheck = element.value.trim();
+        if (valueCheck == "") {
+            checkIsValueError = true;
+        }
+        else {
+            checkIsValueError = false;
+            var arrayElement = [MaNgayNghiElement,NgayNghiElement, LyDoElement];
+            arrayElement.forEach(function (element) {
+                if (element.value.trim() == "") {
+                    checkIsValueError = true;
+                }
+                else if (element == MaNgayNghiElement) { checkMaNgayNghi(MaNgayNghiElement); }
+                else if (element == NgayNghiElement) { checkTenNgayNghi(NgayNghiElement); }
+
+            });
+        }
+        if (valueCheck.trim() == "") {
+            formMesseageInGroup.style.display = 'block';
+        } else {
+            formMesseageInGroup.style.display = 'none';
+        }
+        element.oninput = function () {
+            formMesseageInGroup.style.display = 'none';
+        }
+    }
+    NgayNghiElement.addEventListener("blur", function () { change(NgayNghiElement) });
+    MaNgayNghiElement.addEventListener("blur", function () { change(MaNgayNghiElement) });
+    LyDoElement.addEventListener("blur", function () { change(LyDoElement) });
+    buttonThemElement.addEventListener('click', (event) => {
+        //check từng trường nhập
+        var arrayElement = [MaNgayNghiElement, NgayNghiElement, LyDoElement];
+        var valueNgayNghi = MaNgayNghiElement.value.trim();
+        var valueTenNgayNghi = NgayNghiElement.value.trim();
+        if (valueNgayNghi !== "") {
+            if (checkTenNgayNghi(NgayNghiElement) == true)
+                checkMaNgayNghi(MaNgayNghiElement);
+        }
+        else if (valueTenNgayNghi !== "") {
+            if (checkMaNgayNghi(MaNgayNghiElement) == true)
+                checkTenNgayNghi(NgayNghiElement);
+        }
+        arrayElement.forEach(function (element) {
+            var parentElement = element.parentNode;
+            var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+            if (element.value.trim() == "") {
+                element.focus();
+                formMesseageInGroup.style.display = 'block';
+                checkIsValueError = true;
+            }
+        });
+        if (checkIsValueError) { event.preventDefault(); }
+
+    });
+</script>

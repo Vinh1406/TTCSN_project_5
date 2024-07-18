@@ -1,0 +1,264 @@
+﻿
+@{
+    ViewBag.Title = "UpdatePhongBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLPhongBan", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Sửa phòng ban</h2>
+<style>
+    table, th, td {
+        border: 2px solid gray;
+        padding: 10px;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .two {
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        margin: 0;
+    }
+
+        .two a {
+            color: black;
+            padding: 10px 15px;
+            display: block;
+        }
+
+    .title {
+        text-align: center;
+        margin-top: 0px;
+    }
+
+    table, tr, th {
+        border: none;
+    }
+
+    th {
+        background-color: lightsteelblue;
+        border-bottom: 2px white solid;
+    }
+
+    tr, th, td {
+        padding: 10px;
+        border: none;
+    }
+
+    td {
+        padding: 0;
+        padding-left: 30px;
+        width: 80%;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    table {
+        position: relative;
+        width: 70%;
+    }
+
+    .one {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        background-color: antiquewhite;
+        position: relative;
+    }
+
+
+    .two a {
+        text-decoration: none;
+        color: darkslateblue;
+        display: block;
+        padding: 10px 15px;
+    }
+
+    .input_one {
+        width: 192px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        width: calc(100% - 10px);
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        height: 100%;
+    }
+
+    .form__table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+    .form_meseage,
+    .password_meseage,
+    .account_meseage,
+    .NameAccount_meseage {
+        color: red;
+        font-family: 'Segoe UI';
+        font-size: 16px;
+        display: none;
+        transition: 0.6s;
+    }
+
+    .form_group {
+        width: 100%;
+    }
+</style>
+<p>@ViewBag.id1</p>
+<body>
+@using (Html.BeginForm("SaveUpDatePhongBan", "PhongBan"))
+{
+    <div class="form__table">
+        <table cellpadding="10" border="0">
+            <tr>
+                <th>@Html.Label("Mã Phòng Ban")</th>
+                <td><input type="text" name="MaPhongBan" value="@Model.MaPhongBan" id="MaPhongBan" readonly style="background-color: lightgray; opacity: 0.5;"/></td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Tên Phòng Ban")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextBox("TenPhongBan")
+                        <span class="form_meseage">Tên phòng ban không được để trống</span>
+                        <span class="NameAccount_meseage">Tên phòng ban đã tồn tại!</span>
+                    </div>
+               </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Địa Chỉ")</th>
+                <td>
+                    <div class="form_group">
+                        <input type="text" name="DiaChi" value="@Model.DiaChi" id="DiaChi" />
+                        <span class="form_meseage">Địa chỉ không được để trống</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Số Điện Thoại")</th>
+                <td>
+                    <div class="form_group">
+                        <input type="text" name="sdtLienHe" value="@Model.sdtLienHe" id="sdtLienHe" />
+                        <span class="form_meseage">Số điện thoại không được để trống</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 30px 0; text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="one" type="submit">Cập nhật</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+ }
+</body>
+<script>
+    var TenPhongBanElement = document.querySelector("#TenPhongBan");
+    var DiaChiElement = document.getElementById("DiaChi");
+    var sdtLienHeElement = document.getElementById("sdtLienHe");
+    const buttonElement = document.querySelector(".one");
+    var checkIsValueError = false;
+
+        function checkTenPhongBan(element) {
+        var parentElement = element.parentNode;
+        var TenTaiKhoanMesseageInGroup = parentElement.querySelector(".NameAccount_meseage");
+        var valueCheck = element.value.trim();
+            var dsTenPhongBan = @Html.Raw(Json.Encode(ViewBag.dsTenPhongBan));
+            var curentTenPhongBan = @Html.Raw(Json.Encode(ViewBag.curentTenPhongBan));
+            var indexOfCurrentTenPhongBan = dsTenPhongBan.indexOf(curentTenPhongBan);
+            dsTenPhongBan.splice(indexOfCurrentTenPhongBan, 1);
+            //if (dsTenPhongBan.some(item => item.toUpperCase() === valueCheck.toUpperCase())) {
+            //    dsTenPhongBan = dsTenPhongBan.re
+            //}
+            //đang check phần sửa tên tài khoản
+            if (dsTenPhongBan.some(item => item.toUpperCase() === valueCheck.toUpperCase())){
+                checkIsValueError = true;
+                TenTaiKhoanMesseageInGroup.style.display = 'block';
+            } else {
+                checkIsValueError = false;
+                TenTaiKhoanMesseageInGroup.style.display = 'none';
+            }
+    }
+    function change(element) {
+        var parentElement = element.parentNode;
+        var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+        var valueCheck = element.value.trim();
+        if (valueCheck == "") {
+            checkIsValueError = true;
+        }
+        else {
+            checkIsValueError = false;
+            var arrayElement = [TenPhongBanElement, DiaChiElement, sdtLienHeElement];
+            arrayElement.forEach(function (element) {
+                if (element.value.trim() == "") {
+                    checkIsValueError = true;
+                }
+                if (element == TenPhongBanElement) { checkTenPhongBan(TenPhongBanElement) }
+            });
+        }
+        if (valueCheck == "") {
+            formMesseageInGroup.style.display = 'block';
+        } else {
+            formMesseageInGroup.style.display = 'none';
+        }
+        element.oninput = function () {
+            formMesseageInGroup.style.display = 'none';
+        }
+        //console.log(checkIsValueError)
+    }
+
+    TenPhongBanElement.addEventListener("blur", function () { change(TenPhongBanElement) });
+    DiaChiElement.addEventListener("blur", function () { change(DiaChiElement) });
+    sdtLienHeElement.addEventListener("blur", function () { change(sdtLienHeElement) });
+
+    buttonElement.addEventListener("click", (event) => {
+        var arrayElement = [TenPhongBanElement, DiaChiElement, sdtLienHeElement];
+        arrayElement.forEach(function (element) {
+            var parentElement = element.parentNode;
+var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+            if (element.value.trim() == "") {
+                element.focus();
+                formMesseageInGroup.style.display = 'block';
+                checkIsValueError = true;
+            }
+            else {
+                formMesseageInGroup.style.display = 'none';
+            }
+        });
+
+        if (checkIsValueError) {
+            event.preventDefault();
+        }
+    })
+</script>

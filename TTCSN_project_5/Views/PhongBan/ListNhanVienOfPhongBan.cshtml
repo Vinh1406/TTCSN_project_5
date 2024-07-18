@@ -1,0 +1,154 @@
+﻿
+@{ 
+    ViewBag.Title = "ListNhanVienOfPhongBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+    th, td {
+        padding: 10px 30px;
+    }
+    .two {
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        margin: 0;
+    }
+    .two a {
+        color: black;
+        padding: 10px 15px;
+        display: block;
+    }
+    .title{
+        text-align: center;
+    }
+
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+    th, td {
+        padding: 5px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 10px !important;
+    }
+
+    td {
+        padding: 10px !important;
+        border: 1px solid lightgray;
+    }
+    th {
+        background-color: lightgray;
+        border: 1px solid black;
+    }
+
+    .header {
+        box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
+        margin-bottom: 16px;
+        background-color: white;
+        padding-bottom: 10px;
+    }
+
+    .title {
+        text-align: center;
+        background-color: lightblue;
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 10px 0;
+    }
+
+    .table {
+        max-height: calc(100% - 146px);
+        overflow-y: auto;
+        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+    }
+    .two {
+        /*position: absolute;
+        top: 10px;
+        left: calc(20% + 10px);
+        z-index: 1;*/
+        margin-left: 10px;
+    }
+
+    .one {
+        margin: 0 16px;
+    }
+</style>
+<div class="header">
+
+    <h2 class="title">Danh sách nhân viên @ViewBag.tenphong</h2>
+    <button class="two"><a href="@Url.Action("QLPhongBan", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+</div>
+<div class="table">
+    <table border="1" style="border-collapse:collapse;">
+        <tr>
+            <th>Mã nhân viên</th>
+            <th>Tên tài khoản</th>
+            <th>Mật khẩu</th>
+            <th>Tên nhân viên</th>
+            <th>Ngày sinh</th>
+            <th>Quê Quán</th>
+            <th>Giới tính</th>
+            <th>Số điện thoại</th>
+            <th>Chức vụ</th>
+            <th>Tổng số nhân viên: @ViewBag.lg</th>
+        </tr>
+        @{
+            string gtinh = "";
+            string tencv = "";
+            for (int i = 0; i < ViewBag.lg; i++)
+            {
+                if (@Model[i].GioiTinh == 1)
+                {
+                    gtinh = "Nam";
+                }
+                else { gtinh = "Nữ"; }
+
+                foreach (var item in ViewBag.listcv)
+                {
+                    if (item.MaChucVu == @Model[i].MaChucVu)
+                    {
+                        tencv = item.TenChucVu;
+                    }
+                }
+                <tr>
+                    <td>@Model[i].MaNhanVien</td>
+                    <td>@Model[i].TaiKhoan</td>
+                    <td>@Model[i].MatKhau</td>
+                    <td>@Model[i].HoTen</td>
+                    @{
+                        string curentNgaySinh = String.Format("{0:dd/MM/yyyy}", @Model[i].NgaySinh);
+                    }
+                    <td>@curentNgaySinh</td>
+                    <td>@Model[i].QueQuan</td>
+                    <td>@gtinh</td>
+                    <td>@Model[i].sdt</td>
+                    <td>@tencv</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        @{
+            if (ViewBag.lg == 0)
+            {
+                <tr>
+                    <td colspan="11" style="text-align:center;">Không tồn tại bản ghi nào</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+

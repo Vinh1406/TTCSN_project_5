@@ -1,0 +1,116 @@
+﻿/*.body {
+    padding-top: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.Home {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.Menu {
+    position: block;
+    width: 20%;
+    height:325px;
+    padding-top: 0;
+    margin: 0;
+    height: auto;
+    box-sizing: border-box;
+    float: left;
+}
+
+.Menu_img {
+    width: auto;
+    padding-bottom: 20px;
+    display: flex;
+    border-bottom: 1px solid black;
+    background-color: darkblue;
+}
+
+    .Menu_img .img_logo {
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .Menu_img .img_text {
+        color: white;
+        text-align: center;
+        padding-top: 40px;
+        font-size: 20px;
+        line-height:50px;
+    }*/
+
+/*.Menu_text {
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin: 0;
+    font-size: 22px;
+    border-bottom: 5px solid white;
+    font-weight: bold;
+}*/
+/*.Menu_content {
+    margin: 0;
+    padding: 0;
+    display:block;
+    height:325px;
+}
+.Menu_content ul {
+    width: 100%;
+    color: black;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+    margin-top: 0;
+}
+
+    .Menu_content ul li {
+        width: auto;
+        height: 65px;
+        line-height: 50px;*/
+       /* border-bottom: 5px solid white;*/
+        /*box-sizing: border-box;
+        display:block;
+        display: flex;
+        width: 100%;*/ /*
+        padding-top: 5px;*/
+        /*font-size: 16px;
+       
+    }
+
+        .Menu_content ul li:last-child {
+            border: none;
+        }
+
+        .Menu_content ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            line-height: 60px;
+            display: flex;
+            font-size: 20px;
+            padding-right:5px;
+        }
+
+        .Menu_content ul li:hover {
+            background-color: darkslateblue;
+        }
+
+
+        .Menu_content ul li i {
+            margin-right: 5px; 
+            font-size: 1.2em; 
+            padding-left: 40px;
+            line-height: 60px;;
+            color: white;
+        }
+
+.content {
+    width: 75%;
+    float: right;
+    margin: 50px;
+}*/

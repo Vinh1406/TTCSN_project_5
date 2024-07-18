@@ -1,0 +1,310 @@
+﻿
+@{
+    ViewBag.Title = "AddPhongBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLPhongBan", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Thêm phòng ban</h2>
+<style>
+    table, th, td {
+        border: 2px solid gray;
+        padding: 10px;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .two {
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        background-color: antiquewhite;
+        margin: 0;
+    }
+
+        .two a {
+            color: black;
+            padding: 10px 15px;
+            display: block;
+        }
+
+    .title {
+        text-align: center;
+        margin-top: 0px;
+    }
+
+    table, tr, th {
+        border: none;
+    }
+
+    th {
+        background-color: lightsteelblue;
+        border-bottom: 2px white solid;
+    }
+
+    tr, th, td {
+        padding: 10px;
+        border: none;
+    }
+
+    td {
+        padding: 0;
+        padding-left: 30px;
+        width: 80%;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    table {
+        position: relative;
+        width: 70%;
+    }
+
+    .one {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        background-color: antiquewhite;
+        position: relative;
+    }
+
+
+    .two a {
+        text-decoration: none;
+        color: darkslateblue;
+        display: block;
+        padding: 10px 15px;
+    }
+
+    .input_one {
+        width: 192px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        width: calc(100% - 10px);
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        height: 100%;
+    }
+
+    .form__table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    button:hover{
+        cursor: pointer;
+    }
+    .form_meseage,
+    .password_meseage,
+    .account_meseage,
+    .form_meseage,
+    .form_MaPhongBanMeseage,
+    .NameAccount_meseage,
+    .account_meseage_Space {
+        color: red;
+        font-family: 'Segoe UI';
+        font-size: 16px;
+        display: none;
+        transition: 0.6s;
+    }
+
+    .form_group {
+        width: 100%;
+    }
+</style>
+@using (Html.BeginForm("SavePhongBan", "PhongBan"))
+{
+    <div class="form__table">
+        <table cellpadding="10">
+            <tr>
+                <th>@Html.Label("Mã phòng ban")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextBox("MaPhongBan")
+                        <span class="form_meseage">Mã phòng ban không được để trống!</span>
+                        <span class="form_MaPhongBanMeseage">Mã phòng ban đã tồn tại!</span>
+                        <span class="account_meseage_Space">Mã không là tiếng việt và không chứa khoảng trắng!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Tên Phòng Ban")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextBox("TenPhongBan")
+                        <span class="form_meseage">Tên phòng ban không được để trống!</span>
+                        <span class="NameAccount_meseage">Tên phòng ban đã tồn tại!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Địa Chỉ")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextBox("DiaChi")
+                        <span class="form_meseage">Địa chỉ không được để trống!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.Label("Số Điện Thoại")</th>
+                <td>
+                    <div class="form_group">
+                        @Html.TextBox("sdtLienHe")
+                        <span class="form_meseage">Số điện thoại không được để trống!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 30px 0; text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="one" type="submit">Thêm Phòng Ban</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+ }
+<script>
+    var buttonThemElement = document.querySelector(".one");
+    var TenPhongBanElement = document.getElementById("TenPhongBan");
+    var MaPhongBanElement = document.getElementById("MaPhongBan");
+    var DiaChiElement = document.getElementById("DiaChi");
+    var sdtElement = document.getElementById("sdtLienHe");
+    var checkIsValueError = false;
+
+    function checkTiengViet(inputString) {
+        var vietnamesePattern = /[\u00C0-\u1EF9\u1EFA-\u1F00\u0300-\u036F\s]+/;
+        return vietnamesePattern.test(inputString);
+    }
+    function checkMaPhongBan(element) {
+        var parentElement = element.parentNode;
+        var MaNhanVienMesseageInGroup = parentElement.querySelector(".form_MaPhongBanMeseage");
+        var valueCheck = element.value.trim();
+        var dsMaPhongBan = @Html.Raw(Json.Encode(ViewBag.dsmpb));
+            if (checkTiengViet(valueCheck)) {
+                checkIsValueError = true;
+                parentElement.querySelector(".account_meseage_Space").style.display = 'block';
+                MaNhanVienMesseageInGroup.style.display = 'none';
+                checkIsValueError = true;
+                return false;
+              }
+                else {
+                parentElement.querySelector(".account_meseage_Space").style.display = 'none';
+                if (dsMaPhongBan.some(item => item.toUpperCase() === valueCheck.toUpperCase())) {
+                    checkIsValueError = true;
+                    MaNhanVienMesseageInGroup.style.display = 'block';
+                    return false;
+                } else {
+                    checkIsValueError = false;
+                    MaNhanVienMesseageInGroup.style.display = 'none';
+                    return true;
+                }
+            }
+    }
+        function checkTenPhongBan(element) {
+        var parentElement = element.parentNode;
+        var TenTaiKhoanMesseageInGroup = parentElement.querySelector(".NameAccount_meseage");
+        var valueCheck = element.value.trim();
+        var dsTenPhongBan = @Html.Raw(Json.Encode(ViewBag.dsTenPhongBan));
+            if (dsTenPhongBan.some(item => item.toUpperCase() === valueCheck.toUpperCase())){
+                checkIsValueError = true;
+                TenTaiKhoanMesseageInGroup.style.display = 'block';
+                return false;
+            } else {
+                checkIsValueError = false;
+                TenTaiKhoanMesseageInGroup.style.display = 'none';
+                return true;
+            }
+    }
+    function change(element) {
+        var parentElement = element.parentNode;
+        var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+        var MaPhongBanMesseageInGroup = parentElement.querySelector(".form_MaPhongBanMeseage");
+        var valueCheck = element.value.trim();
+        if (valueCheck == "") {
+            checkIsValueError = true;
+        }
+        else {
+            checkIsValueError = false;
+            var arrayElement = [MaPhongBanElement,TenPhongBanElement, DiaChiElement, sdtElement];
+            arrayElement.forEach(function (element) {
+                if (element.value.trim() == "") {
+                    checkIsValueError = true;
+                }
+                if (element == MaPhongBanElement) {
+                    checkMaPhongBan(MaPhongBanElement);
+                    return;
+                }
+                if (element == TenPhongBanElement) {
+                    checkTenPhongBan(TenPhongBanElement);
+                }
+            });
+        }
+        if (valueCheck == "") {
+            formMesseageInGroup.style.display = 'block';
+        } else {
+            formMesseageInGroup.style.display = 'none';
+        }
+element.oninput = function () {
+            formMesseageInGroup.style.display = 'none';
+            if (element == MaPhongBanElement)
+            MaPhongBanMesseageInGroup.style.display = 'none';
+        }
+        //console.log(checkIsValueError)
+    }
+    TenPhongBanElement.addEventListener("blur", function () { change(TenPhongBanElement) });
+    MaPhongBanElement.addEventListener("blur", function () { change(MaPhongBanElement) });
+    DiaChiElement.addEventListener("blur", function () { change(DiaChiElement) });
+    sdtElement.addEventListener("blur", function () { change(sdtElement) });
+    buttonThemElement.addEventListener('click', (event) => {
+        //check từng trường nhập
+        var arrayElement = [MaPhongBanElement, TenPhongBanElement, DiaChiElement, sdtElement];
+        var valuePhongBan = MaPhongBanElement.value.trim();
+        var valueTenPhongBan = TenPhongBanElement.value.trim();
+        if (valuePhongBan !== "") {
+            if (checkTenPhongBan(TenPhongBanElement) == true)
+                checkMaPhongBan(MaPhongBanElement);
+        }
+        else if (valueTenPhongBan !== "") {
+            if (checkMaPhongBan(MaPhongBanElement) == true)
+                checkTenPhongBan(TenPhongBanElement);
+        }
+        arrayElement.forEach(function (element) {
+            var parentElement = element.parentNode;
+            var formMesseageInGroup = parentElement.querySelector(".form_meseage");
+            if (element.value.trim() == "") {
+                element.focus();
+                formMesseageInGroup.style.display = 'block';
+                checkIsValueError = true;
+            }
+        });
+
+        if (checkIsValueError) { event.preventDefault(); }
+
+    });
+</script>

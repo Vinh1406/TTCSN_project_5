@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewBag.Title = "UpdateLuong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button class="two"><a href="@Url.Action("QLLuong", "Home")"><i class="fa-solid fa-reply" style="color: darkblue;"></i></a></button>
+<h2 class="title">Cập nhật lương</h2>
+
+<style>
+    th, td {
+        padding: 10px 30px;
+    }
+    .two a{
+        color: black;
+    }
+    .two {
+        color: black;
+    }
+
+    table, tr, th {
+        border: none;
+    }
+
+    th {
+        background-color: lightsteelblue;
+        border-bottom: 2px white solid;
+    }
+
+    tr, th, td {
+        padding: 10px;
+    }
+
+    td {
+        padding: 0;
+        padding-left: 30px;
+        width: 80%;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 0px;
+        padding: 15px 0;
+        text-transform: uppercase;
+    }
+
+    table {
+        position: relative;
+        width: 80%;
+    }
+
+    .one {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        top: 0px;
+        right: -95px;
+    }
+
+    .two {
+        color: black;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid black;
+        padding: 7px 10px;
+        background-color: antiquewhite;
+        position: relative;
+        text-align: center;
+    }
+
+        .two a {
+            text-decoration: none;
+        }
+
+    .input_one {
+        width: 192px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        width: calc(100% - 10px);
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        height: 100%;
+    }
+
+    .form__table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .gender__name input {
+        width: auto;
+    }
+
+    #GioiTinh {
+        color: blue;
+    }
+
+    select {
+        border: none;
+        width: 100%;
+        padding: 5px 0px;
+        outline: none;
+        border-bottom: 1px dotted rgba(128, 128, 128, 0.5);
+        background-color: ghostwhite;
+    }
+
+        select:hover {
+            cursor: pointer;
+            background-color: aliceblue;
+        }
+
+    .ngaysinh input:hover {
+        cursor: pointer;
+    }
+
+    .two, .one {
+        border: none;
+        padding: 0px;
+        border-radius: 10px;
+    }
+
+        .two a,
+        .one {
+            display: block;
+            padding: 10px 15px;
+        }
+
+            .one:hover {
+                cursor: pointer;
+            }
+    textarea{
+        width: calc(100% - 9px);
+        border: none;
+        border-bottom: 1px gray solid;
+        font-size: 14px;
+        padding: 5px;
+        outline: none;
+        max-width: 710px;
+    }
+</style>
+<form action="/Luong/SaveUpdateLuong">
+    <div class="form__table">
+        <table border="0" style="border-collapse:collapse;">
+            <tr>
+                <th>Mã nhân viên</th>
+                <td><input type="text" readonly name="MaNhanVien" value="@Model.MaNhanVien" style="background-color: lightgray; opacity: 0.5;"/></td>
+            </tr>
+            <tr>
+                <th>Tên nhân viên</th>
+                <td><input type="text" readonly name="HoTen" value="@ViewBag.hoten" style="background-color: lightgray; opacity: 0.5;"/></td>
+            </tr>
+            <tr>
+                <th>Lương cơ bản</th>
+                <td><input type="text" name="LuongCoBan" value="@Model.LuongCoBan" /></td>
+            </tr>
+            <tr>
+                <th>Hệ số lương</th>
+                <td><input type="text" name="HeSoLuong" value="@Model.HeSoLuong" /></td>
+            </tr>
+            <tr>
+                <th>Tiền thưởng</th>
+                <td><input type="number" name="TienThuong" value="@Model.TienThuong" /></td>
+            </tr>
+            <tr>
+                <th>Tiền phạt</th>
+                <td><input type="number" name="TienPhat" value="@Model.TienPhat" /></td>
+            </tr>
+            <tr>
+                <th>Phụ cấp</th>
+                <td><input type="text" name="PhuCap" value="@Model.PhuCap" /></td>
+            </tr>
+            <tr>
+                <th>thuế</th>
+                <td><input type="text" disabled name="Thue" value="@Model.Thue" /></td>
+            </tr>
+            <tr>
+                <th>Ghi Chú</th>
+                <td>
+                    <textarea name="GhiChu"></textarea>
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="2" style="padding: 30px 0; text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <button class="one" type="submit" style=" transform: translateX(-160%);">Lưu</button>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</form>
